@@ -56,6 +56,11 @@ and YAML configuration, and more.
 
 Here is an example of setting up a logger with ColorOutputter using a color scheme. While logging, one of the color schemes is changed and it applies immediately to the following log messages. 
 
+
+```ruby
+authorize!(params[:action], @product || Product)
+```
+
 ```ruby
   require 'log4r-color'
   include Log4r
@@ -78,7 +83,7 @@ Here is an example of setting up a logger with ColorOutputter using a color sche
     log.fatal "This is fatal"  
   end
 
-do_logging Logger['color_logger']
+  do_logging Logger['color_logger']
 ```
 
 ## More Info
