@@ -65,7 +65,15 @@ include Log4r
 Logger.global.level = ALL
 formatter = PatternFormatter.new(:pattern => "%l - %m - %c")
 
-ColorOutputter.new 'color', {:colors => {:debug => :light_blue, :info => :light_blue, :warn => :yellow, :error => :red, :fatal => {:color => :red, :background => :white} } }
+ColorOutputter.new 'color', {:colors => 
+  { 
+    :debug  => :light_blue, 
+    :info   => :light_blue, 
+    :warn   => :yellow, 
+    :error  => :red, 
+    :fatal  => {:color => :red, :background => :white} 
+  } 
+}
 
 Logger.new('color_logger', DEBUG).add('color')
 
