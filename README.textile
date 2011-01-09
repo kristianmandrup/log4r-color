@@ -54,6 +54,8 @@ h2. Install
 
 h2. Usage
 
+Here is an example of setting up a logger with ColorOutputter using a color scheme. While logging, one of the color schemes is changed and it applies immediately to the following log messages. 
+
 ```ruby
   require 'log4r-color'
   include Log4r
@@ -77,7 +79,7 @@ h2. Usage
   end
 
 do_logging Logger['color_logger']
-´´´
+```
 
 h2. More Info
 
