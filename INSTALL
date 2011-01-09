@@ -1,0 +1,11 @@
+
+For RubyGems Users
+------------------
+
+Log4r is available via the RubyGems online distribution network. To install
+log4r using this method,
+
+  gem --remote-install log4r
+
+The log4r.gemspec file is included with the release, allowing one to build the
+gem file by hand. For more info, see http://rubygems.rubyforge.org/wiki/wiki.pl
