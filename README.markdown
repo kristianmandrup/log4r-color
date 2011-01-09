@@ -1,15 +1,15 @@
-h1. Log4r-color - A flexible logging library for Ruby
+# Log4r-color - A flexible logging library for Ruby
 
 This release is currently decoupled from the main _log4r_ project. The main addition in this project is the _ColorOutputter_ using colorize to display logs in the console/terminal with colorschemes for each log level.
 
-h2. Release
+## Release
 
 This release:      *1.2*
 Release date:      *Jan/2011*
 License:           LGPLv3
 Maintainer:        Kristian Mandrup
 
-h2. Contributors      
+## Contributors      
 
 * Colby Gutierrez-Kraybill
 * Leon Torres - Original Maintainer
@@ -22,10 +22,10 @@ h2. Contributors
 * Nitay Joffe - STARTTLS
 * David Siegal - Smart updates to RollingFileOutputter
 
-"Homepage":http://log4r.rubyforge.org/
-"Download":http://rubyforge.org/frs/?group_id=203
+[[Homepage|http://log4r.rubyforge.org/]]
+[[Download|http://rubyforge.org/frs/?group_id=203]]
 
-h2. Summary
+## Summary
 
 Log4r is a comprehensive and flexible logging library written in Ruby for use 
 in Ruby programs. It features a hierarchical logging system of any number of 
@@ -34,7 +34,7 @@ per log event, execution tracing, custom formatting, thread safteyness, XML
 and YAML configuration, and more.
 
 
-h2. Requirements
+## Requirements
 
 * (required) Ruby >= 1.7.0 (use log4r 1.0.2 for Ruby 1.6)
 * (optional) RubyGems for installing Log4r as a gem
@@ -43,16 +43,16 @@ h2. Requirements
 * (optional) log4j chainsaw integration requires 'builder' >= 2.0
 * (optional) STARTTLS email login, requires 'smtp_tls" if Ruby <= 1.8.6
 
-h3. Gem requirements
+### Gem requirements
 
 * colorize
 * scribe
 
-h2. Install
+## Install
 
 <code>gem install log4r-color</code>
 
-h2. Usage
+## Usage
 
 Here is an example of setting up a logger with ColorOutputter using a color scheme. While logging, one of the color schemes is changed and it applies immediately to the following log messages. 
 
@@ -81,7 +81,7 @@ Here is an example of setting up a logger with ColorOutputter using a color sche
 do_logging Logger['color_logger']
 ```
 
-h2. More Info
+## More Info
 
 * Installation instructions are in the file INSTALL
 
@@ -103,7 +103,7 @@ h2. More Info
 * Feel free to bug the maintainer with any questions (listed at top of file)
 
 
-h2. Usability
+## Usability
 
 Log4r works really well, so please take advantage of it right away! :)
 All versions since 0.9.2 have been stable and backward-compatible. The
@@ -111,24 +111,18 @@ code is stable enough that updates are infrequent and usually only for
 adding features or keeping the code up to date with Ruby.
 
 
-h2. Platform Issues
+## Platform Issues
 
 Log4r is known to work on Linux and WindowsXP. It's safe to assume that Log4r 
 will work on any Ruby-supported platform.
 
 
-h2. When Trouble Strikes
+## When Trouble Strikes
 
 Log4r comes with an internal logger. To see its output, create a logger
 named 'log4r' before any others and give it a suitable outputter,
+<pre>  trouble = Logger.new['log4r']
+  trouble.add Outputter.stdout  
+</pre>
 
-  trouble = Logger.new['log4r']
-  trouble.add Outputter.stdout
-
-Try running the unit tests provided (run the file tests/runtest.rb). Let
-the maintainer know what's up and feel free to explore and fix the 
-code yourself. It's well documented and written in Ruby. :)
-
-Also, try out the bug/request tracking system at 
-http://rubyforge.org/tracker/?group_id=203
 
