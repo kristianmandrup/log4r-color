@@ -95,7 +95,7 @@ module Log4r
       ### build a mail header for RFC 822
       rfc822msg =
         "From: #{@from}\n" +
-        "To: #{@to}\n" +
+        "To: #{@to.join(', ')}\n" +
         "Subject: #{@subject}\n" +
         "Date: #{Time.now.strftime( "%a, %d %b %Y %H:%M:%S %z %Z")}\n" +
         "Message-Id: <#{"%.8f" % Time.now.to_f}@#{@domain}>\n\n" +
