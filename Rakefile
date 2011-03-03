@@ -10,7 +10,7 @@ require 'date'
 require 'fileutils'
 
 GEM = "log4r-color"
-GEM_VERSION = "1.2"
+GEM_VERSION = "1.2.1"
 AUTHORS = "Colby Gutierrez-Kraybill, Kristian Mandrup (color outputter)"
 EMAIL = "colby@astro.berkeley.edu, kmandrup@gmail.com"
 HOMEPAGE = %q{http://log4r.rubyforge.org}
