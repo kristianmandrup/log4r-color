@@ -56,16 +56,16 @@ module Log4r
       raise ArgumentError, "Colors option must consist of a hash where each key is the log level to define a color scheme for" if !colors.kind_of? Hash
       invalid_levels = colors.keys.reject {|level| valid_levels.include? level}
       if !invalid_levels.empty?
-        raise ArgumentError, "Color schemes can not be defined for these invalid log levels: #{invalid_levels.join(', ')}"
+        raise ArgumentError, "Color schemes cannot be defined for these invalid log levels: #{invalid_levels.join(', ')}"
       end
     end
 
     def self.level_key level 
-      valid_levels[level -1]
+      valid_levels[level]
     end
 
     def self.valid_levels
-      [:debug, :info, :warn, :error, :fatal]
+      LNAMES.collect { |level| level.downcase.to_sym }
     end
   
     # Shortcut for decoding 'true', 'false', true, false or nil into a bool
