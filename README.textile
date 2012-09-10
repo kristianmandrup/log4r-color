@@ -89,6 +89,9 @@ def do_logging(log)
 end
 
 do_logging Logger['color_logger']  
+
+Note: You can set the log levels you allow via the `Log4r.LNAMES` constant, by default set to `['ALL']` to allow any log level.
+
 </pre>
 
 h2. More Info

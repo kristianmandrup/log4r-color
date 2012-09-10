@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{log4r-color}
-  s.version = "1.2.1"
+  s.version = "1.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Colby Gutierrez-Kraybill, Kristian Mandrup (color outputter)"]
-  s.date = %q{2011-03-03}
+  s.date = %q{2012-09-09}
   s.description = %q{See also: http://logging.apache.org/log4j}
   s.email = %q{colby@astro.berkeley.edu, kmandrup@gmail.com}
   s.extra_rdoc_files = ["README", "LICENSE", "TODO"]
