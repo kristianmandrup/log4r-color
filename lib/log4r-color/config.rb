@@ -3,7 +3,17 @@
 
 module Log4r
   module Log4rConfig #:nodoc:
-    LogLevels = ['DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL']
-    LoggerPathDelimiter = '::'
+
+    class << self
+      attr_writer :logLevels
+      def logLevels
+        ['DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL']
+      end
+      
+      attr_writer :loggerPathDelimiter
+      def loggerPathDelimiter
+        '::'
+      end
+    end
   end    
 end

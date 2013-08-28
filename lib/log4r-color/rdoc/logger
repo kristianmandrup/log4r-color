@@ -98,7 +98,7 @@ of its parent.
 
 To specify an ancestors of a logger besides RootLogger, include the names 
 of the ancestors in order of ancestry and delimited by 
-Log4r::Log4rConfig::LoggerPathDelimiter. For example, if the 
+Log4r::Log4rConfig.loggerPathDelimiter. For example, if the 
 delimiter is the default <tt>::</tt>, our logger is 'me' 
 and its ancestors are 'cain', 'grandpa', and 'pa', we create the logger 
 like so:

@@ -2,8 +2,17 @@
 require "log4r-color/config"
 
 module Log4r
-  ALL = 0
-  LNAMES = ['ALL']
+  class << self
+    attr_writer :all
+    def all
+      0
+    end
+
+    attr_writer :lnames
+    def lNames 
+      ['ALL']
+    end
+  end
 
   # Defines the log levels of the Log4r module at runtime. It is given
   # either the default level spec (when root logger is created) or the
@@ -21,12 +30,12 @@ module Log4r
     return if const_defined? :OFF
     for i in 0...levels.size
       name = levels[i].to_s
-      module_eval "#{name} = #{i} + 1; LNAMES.push '#{name}'"
+      module_eval "#{name} = #{i} + 1; lNames.push '#{name}'"
     end
     module_eval %{
-      LNAMES.push 'OFF'
-      LEVELS = LNAMES.size
-      OFF = LEVELS - 1
+      lNames.push 'OFF'
+      levels = lNames.size
+      off = levels - 1
       MaxLevelLength = Log4rTools.max_level_str_size
     }
   end
@@ -48,7 +57,7 @@ module Log4r
     
     def self.max_level_str_size #:nodoc:
       size = 0
-      LNAMES.each {|i| size = i.length if i.length > size}
+      lNames.each {|i| size = i.length if i.length > size}
       size
     end
 
@@ -65,7 +74,7 @@ module Log4r
     end
 
     def self.valid_levels
-      LNAMES.collect { |level| level.downcase.to_sym }
+      lNames.collect { |level| level.downcase.to_sym }
     end
   
     # Shortcut for decoding 'true', 'false', true, false or nil into a bool

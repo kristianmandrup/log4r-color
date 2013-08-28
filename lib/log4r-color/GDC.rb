@@ -8,7 +8,10 @@
 require 'monitor'
 
 module Log4r
-  GDCNAME = "log4rGDC"
+  def self.gdcName
+    "log4rGDC"
+  end
+  
   $globalGDCLock = Monitor.new
 
   # See log4r-color/GDC.rb
@@ -21,19 +24,20 @@ module Log4r
 
     def self.get()
       $globalGDCLock.synchronize do
-	if ( Thread.main[GDCNAME] == nil ) then
-	  Thread.main[GDCNAME] = $0
-	end
+      	if ( Thread.main[GDCNAME] == nil ) then
+      	  Thread.main[GDCNAME] = $0
+      	end
       end
       return Thread.main[GDCNAME]
     end
 
     def self.set( a_name )
       if ( Thread.current != Thread.main ) then
-	raise "Can only initialize Global Diagnostic Context from Thread.main" 
+        raise "Can only initialize Global Diagnostic Context from Thread.main" 
       end
+
       $globalGDCLock.synchronize do
-	Thread.main[GDCNAME] = a_name
+        Thread.main[GDCNAME] = a_name
       end
     end
   end

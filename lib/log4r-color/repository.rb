@@ -47,7 +47,7 @@ module Log4r
       # Retrieves all children of a parent
       def self.all_children(parent)
 	# children have the parent name + delimiter in their fullname
-	daddy = parent.name + Private::Config::LoggerPathDelimiter
+	daddy = parent.name + Private::Config.loggerPathDelimiter
 	self.synchronize do
 	  for fullname, logger in instance.loggers
 	    yield logger if parent.is_root? || fullname =~ /#{daddy}/
@@ -70,11 +70,11 @@ module Log4r
       # looks for the first defined logger in a child's path 
       # or nil if none found (which will then be rootlogger)
       def self.find_ancestor(path)
-	arr = path.split Log4rConfig::LoggerPathDelimiter
+	arr = path.split Log4rConfig.loggerPathDelimiter
 	logger = nil
 	self.synchronize do
 	  while arr.size > 0 do
-	    logger = Repository[arr.join(Log4rConfig::LoggerPathDelimiter)]
+	    logger = Repository[arr.join(Log4rConfig.loggerPathDelimiter)]
 	    break unless logger.nil?
 	    arr.pop
 	  end

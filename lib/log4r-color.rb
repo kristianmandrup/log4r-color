@@ -16,5 +16,7 @@ require "log4r-color/NDC"
 require "log4r-color/MDC"
 
 module Log4r
-  Log4rVersion = [1, 1, 9].join '.'
+  def self.log4rVersion
+    "1.3"
+  end
 end

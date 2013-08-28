@@ -40,7 +40,7 @@ module Log4r
     end
 
     def validate_name(_fullname)
-      parts = _fullname.split Log4rConfig::LoggerPathDelimiter
+      parts = _fullname.split Log4rConfig.loggerPathDelimiter
       for part in parts
         raise ArgumentError, "Malformed path", caller[1..-1] if part.empty?
       end
@@ -51,14 +51,14 @@ module Log4r
     # deals with level inheritance
 
     def deal_with_inheritance(_level)
-      mypath = @fullname.split Log4rConfig::LoggerPathDelimiter
+      mypath = @fullname.split Log4rConfig.loggerPathDelimiter
       @name = mypath.pop
       if mypath.empty? # then root is my daddy
         @path = ""
         # This is one of the guarantees that RootLogger gets created
         @parent = Logger.root
       else
-        @path = mypath.join(Log4rConfig::LoggerPathDelimiter)
+        @path = mypath.join(Log4rConfig.loggerPathDelimiter)
         @parent = Repository.find_ancestor(@path)
         @parent = Logger.root if @parent.nil?
       end
@@ -163,14 +163,15 @@ module Log4r
   #   an Outputter is created, RootLogger is also created.
   #
   # When RootLogger is created, it calls
+
+  # -- Turned from Constant into class method --
   # Log4r.define_levels(*Log4rConfig::LogLevels). This ensures that the 
   # default levels are loaded if no custom ones are.
 
   class RootLogger < Logger
     include Singleton
 
-    def initialize
-      Log4r.define_levels(*Log4rConfig::LogLevels) # ensure levels are loaded
+    def initialize      
       @level = ALL
       @outputters = []
       Repository['root'] = self
